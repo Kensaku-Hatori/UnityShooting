@@ -15,6 +15,7 @@ public class PlayerContllo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //ˆÚ“®
         if(Input.GetKey(KeyCode.W))
         {
             transform.Translate(0, PlayerSpeed, 0);
@@ -32,5 +33,10 @@ public class PlayerContllo : MonoBehaviour
             transform.Translate(PlayerSpeed, 0, 0);
         }
 
+        //ˆÚ“®§ŒÀ
+        if(transform.position.x <= 0)
+        {
+
+        }
     }
 }
