@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6215395618169475170, guid: e092378170937ad449d2cd8208198b6e, type: 3}
       propertyPath: m_Name
-      value: PixelArtSpaceShipOne
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6215395618169475172, guid: e092378170937ad449d2cd8208198b6e, type: 3}
       propertyPath: m_SortingOrder

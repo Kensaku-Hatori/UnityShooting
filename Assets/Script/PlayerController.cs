@@ -7,7 +7,6 @@ public class PlayerContllo : MonoBehaviour
     float PlayerSpeed = 0.1f;
     public GameObject BulletPrefab;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -57,11 +56,15 @@ public class PlayerContllo : MonoBehaviour
             transform.Translate(0, -PlayerSpeed, 0);
         }
 
-
-        //
+        
+        //’e
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+            Instantiate(BulletPrefab, transform.position, Quaternion.EulerAngles(0.0f,0.0f, Mathf.PI * 0.05f));
+
+            Instantiate(BulletPrefab, transform.position, Quaternion.EulerAngles(0.0f, 0.0f, Mathf.PI * 0.0f));
+
+            Instantiate(BulletPrefab, transform.position, Quaternion.EulerAngles(0.0f, 0.0f, Mathf.PI * -0.05f));
         }
     }
 }
