@@ -34,9 +34,23 @@ public class PlayerContllo : MonoBehaviour
         }
 
         //à⁄ìÆêßå¿
-        if(transform.position.x <= 0)
+        if(transform.position.x <= -8.0f)
         {
-
+            transform.Translate(PlayerSpeed, 0, 0);
         }
+        if (transform.position.x >= 8.0f)
+        {
+            transform.Translate(-PlayerSpeed, 0, 0);
+        }
+
+        if (transform.position.y <= -4.5f)
+        {
+            transform.Translate(0, PlayerSpeed, 0);
+        }
+        if (transform.position.y >= 4.5f)
+        {
+            transform.Translate(0, -PlayerSpeed, 0);
+        }
+
     }
 }
