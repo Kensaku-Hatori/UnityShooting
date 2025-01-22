@@ -15,13 +15,16 @@ public class SceneController : MonoBehaviour
     void Update()
     {
         Scene loadScene = SceneManager.GetActiveScene();
-        if(Input.GetMouseButtonDown(0)&&loadScene.name == "TitleScene")
+        if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene("GameScene");
-        }
-        else if (Input.GetMouseButtonDown(0) && loadScene.name == "ResultScene")
-        {
-            SceneManager.LoadScene("TitleScene");
+            if (loadScene.name == "TitleScene")
+            {
+                SceneManager.LoadScene("GameScene");
+            }
+            else if (loadScene.name == "ResultScene")
+            {
+                SceneManager.LoadScene("TitleScene");
+            }
         }
     }
 }

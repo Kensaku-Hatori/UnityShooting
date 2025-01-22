@@ -30,7 +30,7 @@ public class RestartManager : MonoBehaviour
     public void PrintGameOver()
     {
         // ゲームオーバーを表示する
-        text.GetComponent<TextMeshProUGUI>().text = "GameOver";
+        text.GetComponent<TextMeshProUGUI>().text = "GameOver\nClick or Enter";
         text.SetActive(true);
         // ゲームオーバー
         isGameOver = true;
@@ -38,7 +38,7 @@ public class RestartManager : MonoBehaviour
     public void PrintGameClear()
     {
         // ゲームオーバーを表示する
-        text.GetComponent<TextMeshProUGUI>().text = "GameClear";
+        text.GetComponent<TextMeshProUGUI>().text = "GameClear\nClick or Enter";
         text.SetActive(true);
         // ゲームクリアー
         isGameClear = true;
