@@ -59,7 +59,7 @@ public class PlayerContllo : MonoBehaviour
 
 
         //
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(BulletPrefab, transform.position, Quaternion.identity);
         }

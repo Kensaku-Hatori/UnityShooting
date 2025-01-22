@@ -14,9 +14,9 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0.2f, 0, 0);
+        transform.Translate(0.1f, 0, 0);
 
-        if(transform.position.x > 8)
+        if(transform.position.x > 10)
         {
             Destroy(gameObject);
         }
