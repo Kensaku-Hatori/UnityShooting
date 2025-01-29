@@ -319,6 +319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss01
       objectReference: {fileID: 0}
+    - target: {fileID: 772500560104601366, guid: 2e533f202c98f7b4f87982d1597904cf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1939599693788559465, guid: 2e533f202c98f7b4f87982d1597904cf, type: 3}
       propertyPath: m_FlipX
       value: 0

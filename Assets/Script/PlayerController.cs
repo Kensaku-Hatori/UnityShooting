@@ -77,7 +77,7 @@ public class PlayerContllo : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-       if(other.gameObject.tag == "Boss")
+       if(other.gameObject.tag == "Boss01" || other.gameObject.tag == "Boss02")
         {
             StartCoroutine("Resporn");
         }
