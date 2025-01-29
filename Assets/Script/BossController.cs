@@ -65,8 +65,27 @@ public class BossController : MonoBehaviour
                 }
             }
         }
-        else
+        else if(Boss.tag =="Boss2")
         {
+            [SerializeField] float moveSpeed = 3.0f;                   // ˆÚ“®’l
+            [SerializeField] Vector3 moveVec = new Vector3(-1, 0, 0);  // ˆÚ“®•ûŒü
+
+            void Update()
+            {
+                float add_move = moveSpeed * Time.deltaTime;
+                transform.Translate(moveVec * add_move);
+            }
+
+            public void SetMoveSpeed(float _speed)
+            {
+                moveSpeed = _speed;
+            }
+
+            public void SetMoveVec(Vector3 _vec)
+            {
+                moveVec = _vec.normalized;
+            }
+
 
         }
     }

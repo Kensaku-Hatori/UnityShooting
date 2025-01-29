@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
+
     [SerializeField] float moveSpeed = 3.0f;                   // 移動値
     [SerializeField] Vector3 moveVec = new Vector3(-1, 0, 0);  // 移動方向
+    public GameObject prefab;
 
-    // Update is called once per frame
+
     void Update()
     {
         float add_move = moveSpeed * Time.deltaTime;
@@ -19,15 +21,16 @@ public class Enemy : MonoBehaviour
         moveSpeed = _speed;
     }
 
-    public void SetMoveVec(Vector3 _Vec)
+    public void SetMoveVec(Vector3 _vec)
     {
-        moveVec = _Vec.normalized;
+        moveVec = _vec.normalized;
     }
 
-    enum　ShotType
+    enum ShotType
     {
-        NONE=0,
-        AIM,
+        NONE = 0,
+        AIM,            // プレイヤーを狙う
+        THREE_WAY,      // ３方向
     }
 
     [System.Serializable]
@@ -35,17 +38,19 @@ public class Enemy : MonoBehaviour
     {
         public int frame;
         public ShotType type;
-        public Enemy bullet;
+        public EnemyBullet bullet;
     }
 
+    // ショットデータ
     [SerializeField] ShotData shotData = new ShotData { frame = 60, type = ShotType.NONE, bullet = null };
 
-    GameObject playerObj = null;
-    int shotFrame = 0;
+    GameObject playerObj = null;    // プレイヤーオブジェクト
+    int shotFrame = 0;              // フレーム
 
     void Start()
     {
-        switch(shotData.type)
+        // プレイヤーオブジェクトを取得する
+        switch (shotData.type)
         {
             case ShotType.AIM:
                 playerObj = GameObject.Find("player");
@@ -53,24 +58,44 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // ショット処理（これをUpdateなどで呼ぶ）
     void Shot()
     {
         ++shotFrame;
-        if(shotFrame>shotData.frame)
+        if (shotFrame > shotData.frame)
         {
-            switch(shotData.type)
+            switch (shotData.type)
             {
+                // プレイヤーを狙う
                 case ShotType.AIM:
                     {
                         if (playerObj == null) { break; }
-                        Enemy bullet = (Enemy)Instantiate(
+                        EnemyBullet bullet = (EnemyBullet)Instantiate(
                             shotData.bullet,
                             transform.position,
-                            Quaternion.identity);
+                            Quaternion.identity
+                        );
                         bullet.SetMoveVec(playerObj.transform.position - transform.position);
                     }
                     break;
+
+                // ３方向
+                case ShotType.THREE_WAY:
+                    {
+                        //弾
+                        EnemyBullet bullet = (EnemyBullet)Instantiate(
+                    shotData.bullet,
+                    transform.position,
+                    Quaternion.identity
+                );
+                        bullet = (EnemyBullet)Instantiate(shotData.bullet, transform.position, Quaternion.identity);
+                        bullet.SetMoveVec(Quaternion.AngleAxis(15, new Vector3(0, 0, 1)) * new Vector3(-1, 0, 0));
+                        bullet = (EnemyBullet)Instantiate(shotData.bullet, transform.position, Quaternion.identity);
+                        bullet.SetMoveVec(Quaternion.AngleAxis(-15, new Vector3(0, 0, 1)) * new Vector3(-1, 0, 0));
+                    }
+                    break;
             }
+
             shotFrame = 0;
         }
     }
