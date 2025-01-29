@@ -13,6 +13,8 @@ public class BossController : MonoBehaviour
     int nCount,Action,OldAction;
     bool bAction;
     int nHP;
+    private Renderer color;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,9 @@ public class BossController : MonoBehaviour
         nCount = 0;
         Action = 0;
         addforce = move;
-        nHP = 10;
+        nHP = 100;
+        color = GetComponent<Renderer>();
+        color.material.color = new Color(1, 1, 1, 1);
     }
 
     // Update is called once per frame
@@ -108,11 +112,21 @@ public class BossController : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             nHP--;
+
+            StartCoroutine("HitColor");
+
             if (nHP <= 0)
             {
                 Destroy(gameObject);
             }
         }
+    }
+
+    IEnumerator HitColor()
+    {
+        color.material.color = new Color(1, 0, 0, 1); //Ô
+        yield return new WaitForSeconds(0.5f);
+        color.material.color = new Color(1, 1, 1, 1); //”’
     }
 
 }
