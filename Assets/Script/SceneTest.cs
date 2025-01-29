@@ -17,9 +17,12 @@ public class SceneTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)&&restart.IsGameClear())
+        if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
         {
-            restart.Restart();
+            if (restart.IsGameClear())
+            {
+                restart.Restart();
+            }
         }
         if(Input.GetKeyDown(KeyCode.Return))
         {
