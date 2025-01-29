@@ -67,8 +67,8 @@ public class BossController : MonoBehaviour
         }
         else if(Boss.tag =="Boss2")
         {
-            [SerializeField] float moveSpeed = 3.0f;                   // ˆÚ“®’l
-            [SerializeField] Vector3 moveVec = new Vector3(-1, 0, 0);  // ˆÚ“®•ûŒü
+            float moveSpeed = 3.0f;                   // ˆÚ“®’l
+            Vector3 moveVec = new Vector3(-1, 0, 0);  // ˆÚ“®•ûŒü
 
             void Update()
             {
@@ -76,12 +76,12 @@ public class BossController : MonoBehaviour
                 transform.Translate(moveVec * add_move);
             }
 
-            public void SetMoveSpeed(float _speed)
+            void SetMoveSpeed(float _speed)
             {
                 moveSpeed = _speed;
             }
 
-            public void SetMoveVec(Vector3 _vec)
+            void SetMoveVec(Vector3 _vec)
             {
                 moveVec = _vec.normalized;
             }
