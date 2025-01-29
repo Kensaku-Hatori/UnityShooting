@@ -67,4 +67,12 @@ public class PlayerContllo : MonoBehaviour
             Instantiate(BulletPrefab, transform.position, Quaternion.EulerAngles(0.0f, 0.0f, Mathf.PI * -0.05f));
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+       if(other.gameObject.tag=="Boss")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6489555476812826890}
   m_Layer: 0
   m_Name: Boss01
-  m_TagString: Boss01
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Boss: {fileID: 772500560104601366}
+  BulletPrefab: {fileID: 8621761254167619944, guid: 7435c3b78271a7746b1ed895efea2a06, type: 3}
   move: {x: 0, y: 0.03, z: 0}
+  ActionCoolDown: 0
+  tacklspeed: 0
 --- !u!61 &6489555476812826890
 BoxCollider2D:
   m_ObjectHideFlags: 0

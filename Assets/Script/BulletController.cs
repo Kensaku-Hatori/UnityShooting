@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +21,9 @@ public class BulletController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D coll)
-    {
-        Destroy(coll.gameObject);
-        Destroy(gameObject);
-    }
+    //void OnTriggerEnter2D(Collider2D coll)
+    //{
+    //    Destroy(coll.gameObject);
+    //}
 
 }
