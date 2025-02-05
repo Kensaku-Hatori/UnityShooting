@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2793326144906728721}
   m_Layer: 0
   m_Name: enemy_bullet
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   moveVec: {x: -1, y: 0, z: 0}
-  prefab: {fileID: 0}
   shotData:
     frame: 30
     type: 2
