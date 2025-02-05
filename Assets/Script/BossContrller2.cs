@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BossContrller2 : MonoBehaviour
 {
+    public int nHP;
+    private Renderer color;
+
     enum ShotType
     {
         NONE = 0,
@@ -30,6 +33,9 @@ public class BossContrller2 : MonoBehaviour
 
     void Start()
     {
+        nHP = 50;
+        color = GetComponent<Renderer>();
+        color.material.color = new Color(1, 1, 1, 1);
 
         // プレイヤーオブジェクトを取得する
         switch (shotData.type)
@@ -99,4 +105,27 @@ public class BossContrller2 : MonoBehaviour
         }
         Shot();
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            nHP--;
+
+            StartCoroutine("HitColor");
+
+            if (nHP <= 0)
+            {
+                StartCoroutine("BossResporn");
+                nHP = 50;
+            }
+        }
+    }
+
+    IEnumerator HitColor()
+    {
+        color.material.color = new Color(1, 0, 0, 1); //赤
+        yield return new WaitForSeconds(0.5f);
+        color.material.color = new Color(1, 1, 1, 1); //白
+    }
+
 }
