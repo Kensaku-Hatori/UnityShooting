@@ -11,12 +11,13 @@ public class BossController : MonoBehaviour
     public int ActionCoolDown;
     public int tacklspeed;
     public int nHP;
-
     Vector3 addforce;
     int nCount,Action,OldAction;
     bool bAction;
     private Renderer color;
-    bool bColl;
+
+    private Boss boss;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class BossController : MonoBehaviour
         nCount = 0;
         Action = 0;
         addforce = move;
-        nHP = 50;
+        nHP = 20;
         color = GetComponent<Renderer>();
         color.material.color = new Color(1, 1, 1, 1);
     }
@@ -141,8 +142,8 @@ public class BossController : MonoBehaviour
 
             if (nHP <= 0)
             {
-                StartCoroutine("BossResporn");
-                nHP = 50;
+                boss.BossResporn();
+                nHP = 20;
             }
         }
     }
