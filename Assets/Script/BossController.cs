@@ -5,15 +5,18 @@ using UnityEngine;
 public class BossController : MonoBehaviour
 {
     public GameObject Boss;
+
     public GameObject BulletPrefab;
     public Vector3 move;
     public int ActionCoolDown;
     public int tacklspeed;
+    public int nHP;
+
     Vector3 addforce;
     int nCount,Action,OldAction;
     bool bAction;
-    int nHP;
     private Renderer color;
+    bool bColl;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +28,7 @@ public class BossController : MonoBehaviour
         nHP = 100;
         color = GetComponent<Renderer>();
         color.material.color = new Color(1, 1, 1, 1);
+        bColl = true;
     }
 
     // Update is called once per frame
@@ -33,6 +37,8 @@ public class BossController : MonoBehaviour
         nCount++;
         if(nCount >= ActionCoolDown && bAction == false)
         {
+            nCount = 0;
+
             ActionUpdate();
         }
         BossMove();
@@ -128,7 +134,7 @@ public class BossController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && bColl == true)
         {
             nHP--;
 
@@ -136,7 +142,8 @@ public class BossController : MonoBehaviour
 
             if (nHP <= 0)
             {
-                Destroy(gameObject);
+                StartCoroutine("Resporn");
+                bColl = false;
             }
         }
     }
@@ -146,6 +153,27 @@ public class BossController : MonoBehaviour
         color.material.color = new Color(1, 0, 0, 1); //Ô
         yield return new WaitForSeconds(0.5f);
         color.material.color = new Color(1, 1, 1, 1); //”’
+    }
+
+    private IEnumerator Resporn()
+    {
+        int nBossType = (int)Random.Range(0.0f, 1.0f);
+
+        color.material.color = new Color(1, 1, 1, 0); //“§–¾
+        yield return new WaitForSeconds(1.5f);
+        color.material.color = new Color(1, 1, 1, 1); //”’
+        transform.position = new Vector3(7.0f, 0.0f, 0.0f);
+        nHP = 100;
+        bColl = true;
+        switch(nBossType)
+        {
+            case 0:
+                Instantiate(BulletPrefab, transform.position, Quaternion.EulerAngles(0.0f, 0.0f, Mathf.PI * 0.0f));
+                break;
+            case 1:
+
+                break;
+        }
     }
 
 }

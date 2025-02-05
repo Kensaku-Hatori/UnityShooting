@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2793326144906728721}
   m_Layer: 0
   m_Name: enemy_bullet
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc0b7c955354e84fb0b0bb7db08bb71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -2
+ moveSpeed: 3
+  moveVec: {x: -1, y: 0, z: 0}
+  shotData:
+    frame: 30
+    type: 2
+    bullet: {fileID: 680058823294222335}
 --- !u!135 &2793326144906728721
 SphereCollider:
   m_ObjectHideFlags: 0
