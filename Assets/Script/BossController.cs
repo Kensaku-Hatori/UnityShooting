@@ -25,10 +25,9 @@ public class BossController : MonoBehaviour
         nCount = 0;
         Action = 0;
         addforce = move;
-        nHP = 100;
+        nHP = 50;
         color = GetComponent<Renderer>();
         color.material.color = new Color(1, 1, 1, 1);
-        bColl = true;
     }
 
     // Update is called once per frame
@@ -134,7 +133,7 @@ public class BossController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && bColl == true)
+        if (other.gameObject.tag == "Player")
         {
             nHP--;
 
@@ -142,8 +141,8 @@ public class BossController : MonoBehaviour
 
             if (nHP <= 0)
             {
-                StartCoroutine("Resporn");
-                bColl = false;
+                StartCoroutine("BossResporn");
+                nHP = 50;
             }
         }
     }
@@ -154,26 +153,4 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         color.material.color = new Color(1, 1, 1, 1); //”’
     }
-
-    private IEnumerator Resporn()
-    {
-        int nBossType = (int)Random.Range(0.0f, 1.0f);
-
-        color.material.color = new Color(1, 1, 1, 0); //“§–¾
-        yield return new WaitForSeconds(1.5f);
-        color.material.color = new Color(1, 1, 1, 1); //”’
-        transform.position = new Vector3(7.0f, 0.0f, 0.0f);
-        nHP = 100;
-        bColl = true;
-        switch(nBossType)
-        {
-            case 0:
-                Instantiate(BulletPrefab, transform.position, Quaternion.EulerAngles(0.0f, 0.0f, Mathf.PI * 0.0f));
-                break;
-            case 1:
-
-                break;
-        }
-    }
-
 }
